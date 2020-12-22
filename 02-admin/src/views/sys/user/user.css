@@ -1,0 +1,33 @@
+.role-container {
+  padding: 5px;
+}
+
+.button-add {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.table {
+  margin-top: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.raw-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 120px;
+}
+
+.modal-raw {
+  margin-top: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-raw .title {
+  color: cornflowerblue;
+}
