@@ -1,6 +1,7 @@
 
 const RSA = require("../rsa/RSA");
 const key = RSA.getRSAKey(); // 得到加密后的秘钥,用于调用加密方法
+const tokenTimeout = 10;
 exports.getToken = (uid) => {
     let header = { // token头部信息
         "sec": "RSA", // 密码算法RSA

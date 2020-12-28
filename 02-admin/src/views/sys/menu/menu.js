@@ -77,7 +77,7 @@ function MenuHook(props) {
   ];
 
   const showEditMenuModal = (dom) => {
-    console.log(dom)
+
     setEditMenu(dom)
     setMenuEditModal(true);
 
@@ -105,14 +105,10 @@ function MenuHook(props) {
 
     if (res.code === 1) {
       const res = await props.http.list();
-      console.log(res.ob)
       setMenu(res.ob);
     }
 
   }
-
-
-
   const onMenuAddModalCancel = () => { setMenuAddModal(false); }
 
   const onMenuAddSelectChange = (value) => {

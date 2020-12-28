@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { Layout, Typography } from "antd";
 import {
   MenuFoldOutlined,
@@ -9,60 +10,44 @@ import "./Header.css";
 const { Text } = Typography;
 const { Header } = Layout;
 
-export default class MyHeader extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      collapsed: false,
-      callback: props.callback
-    };
-  }
-
-  siderAction() {
-    let buffer = this.state.collapsed;
-    if (buffer) {
-      buffer = false;
+export default function MyHeader(props) {
+  let history = useHistory();
+  let [collapsed, setCollapsed] = useState(false);
+  const siderAction = () => {
+    if (collapsed) {
+      setCollapsed(false);
     } else {
-      buffer = true;
+      setCollapsed(true);
     }
-
-    this.state.callback(buffer);
-
-    this.setState({
-      collapsed: buffer
-    });
+    props.callback(collapsed);
   }
 
-  logout() {
+  const logout = () => {
     //清除用户保存的信息
     localStorage.removeItem("user");
-    console.log(this.props.headerProps);
-    this.props.headerProps.history.push({
-      pathname: "/login",
-      state: {}
-    });
+    history.push(`/login`);
   }
-  render() {
-    return (
-      <Header className="HeaderBox">
-        <div className="titleBox">
-          <MenuFoldOutlined
-            className="icon"
-            type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-            onClick={this.siderAction.bind(this)}
-          />
-        </div>
-        <div className="menuBox">
-          <MailOutlined />
-          <Text
-            className="menuWords"
-            strong={true}
-            onClick={this.logout.bind(this)}
-          >
-            退出
+
+  return (
+    <Header className="HeaderBox">
+      <div className="titleBox">
+        <MenuFoldOutlined
+          className="icon"
+          type={collapsed ? "menu-unfold" : "menu-fold"}
+          onClick={siderAction}
+        />
+      </div>
+      <div className="menuBox">
+        <MailOutlined />
+        <Text
+          className="menuWords"
+          strong={true}
+          onClick={logout}
+        >
+          退出
           </Text>
-        </div>
-      </Header>
-    );
-  }
+      </div>
+    </Header>
+  );
+
 }

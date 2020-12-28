@@ -12,7 +12,7 @@ const routes = [
     path: "/",
     title: "主页面",
     component: HomeHook,
-    auth: false, //需要拦截
+    auth: true, //需要拦截
   },
 ];
 export default routes;

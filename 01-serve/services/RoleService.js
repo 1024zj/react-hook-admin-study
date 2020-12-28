@@ -71,7 +71,6 @@ class RoleService extends Service {
     } else {
       ob = this.success("删除失败", -1)
     }
-    console.log(ob);
     return ob;
   }
   async add(ob) {
@@ -82,7 +81,7 @@ class RoleService extends Service {
       return newO;
     }
     let insertRes = await this.model.insertRole(ob);
-    console.log(insertRes)
+
     if (insertRes) {
 
       let res = await this.list();

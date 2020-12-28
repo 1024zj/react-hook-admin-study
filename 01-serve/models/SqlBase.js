@@ -44,20 +44,17 @@ class SqlBase {
     }
 
     sqlStr = `INSERT INTO ${tableName}` + sqlStr
-
     let res = await this.work(sqlStr);
     return res.affectedRows > 0;
   }
 
 
   async delete(tableName, obj) {
-    console.log(obj)
     let sql = `delete from ${tableName} where `
     for (let key in obj) {
       sql += `${key} = '${obj[key]}' and `
     }
     sql = sql.substring(0, sql.length - 5);
-    console.log(sql)
     let res = await this.work(sql);
     return res.affectedRows > 0;
   }

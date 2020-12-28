@@ -9,9 +9,9 @@ import utlis from "./utils/index";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App http={http} utlis={utlis} />
-    </Provider>
+  <Provider store={store}>
+    <App http={http} utlis={utlis} />
+  </Provider>
   ,
   document.getElementById("root")
 );

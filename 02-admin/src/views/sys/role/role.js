@@ -23,7 +23,6 @@ export default function RoleHook(props) {
       const res = await props.http.getRolesList();
       //把当前的数据保存在当前状态
       setRoles(res.ob);
-      console.log(res.ob)
       let newRole = { ...res.ob[0] }
       newRole.menus = [];
       setRole(newRole);
@@ -34,7 +33,6 @@ export default function RoleHook(props) {
     async (id) => {
       //联网获得服务器数据
       const res = await props.http.deleteRole({ id: id });
-      console.log(res)
       //把当前的数据保存在当前状态
       setRoles(res.ob);
     }, [props.http]

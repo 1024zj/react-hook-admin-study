@@ -8,8 +8,10 @@ import "./loginPage.css";
 function Login(props) {
   let history = useHistory();
   const onFinish = async (values) => {
+
     let res = await props.http.login(values);
-    if (res.ob) {
+
+    if (res.code === 1) {
       props.setToken(res.ob.token);
       props.setUser(res.ob);
       history.push(`/`);
@@ -19,7 +21,7 @@ function Login(props) {
   return (
     <div className="container-login">
 
-      <h1 className="page-title">后台管理系统-登录 {props.token}页面</h1>
+      <h1 className="page-title">后台管理系统-{props.token}登录页面</h1>
       <Form
         className="form"
         name="login"
@@ -91,7 +93,7 @@ function Login(props) {
   );
 }
 
-const mapStatetiProps = (state) => ({
+const mapStateToProps = (state) => ({
   user: state.user.user,
   token: state.user.token
 });
@@ -112,4 +114,4 @@ const mapDispatch = (dispatch) => ({
     dispatch(action);
   }
 });
-export default connect(mapStatetiProps, mapDispatch)(Login);
+export default connect(mapStateToProps, mapDispatch)(Login);

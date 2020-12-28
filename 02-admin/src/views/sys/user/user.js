@@ -22,7 +22,6 @@ export default function UserHook(props) {
       const res = await props.http.getUserList();
       //把当前的数据保存在当前状态
       setUserList(res.ob);
-      console.log(res.ob)
     }, [props.http]
   );
 
@@ -32,8 +31,6 @@ export default function UserHook(props) {
       const res = await props.http.deleteUser({ id: id });
       //更新用户列表
       setUserList(res.ob);
-
-
     }, [props.http]
   );
   useEffect(() => {
@@ -56,35 +53,12 @@ export default function UserHook(props) {
 
     //获得表单数据
     let values = await form.validateFields();
-    console.log(values)
+    //向后台服务器进行添加用户的请求
     let res = await props.http.addUser(values);
-
+    //更新用户数据
     setUserList(res.ob);
-
-
+    //重置表单数据
     form.resetFields();
-
-
-
-    // let username = inputAddUserRef.current.state.value;
-    // let menus = role.id;
-    // if (typeof (username) === 'undefined' || username.length < 1) {
-    //   message.warn("请输入角色名字！");
-    //   return;
-    // }
-    // if (typeof (menus) === 'undefined') {
-    //   message.warn("请选择权限！");
-    //   return;
-    // }
-
-    // let res = await props.http.addRole({ username: username, menus: menus });
-
-    // inputAddUserRef.current.state.value = "";
-    // let obj = { ...role };
-    // //修改被点击的节点
-    // obj.menus = [];
-    // setRole(obj)
-
   }
 
   const onAddUserModalCancel = () => {
