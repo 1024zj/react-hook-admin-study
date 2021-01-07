@@ -27,9 +27,6 @@ class RoleService extends Service {
       res[i].treeData = this.setMenuToRole(menus);
       res[i].menus = this.stringToArray(res[i].menus);
     }
-    // console.log(44)
-    // console.log(res)
-    // console.log(55)
     return this.success("查询成功！", 1, res);
   }
 

@@ -64,7 +64,7 @@ class UserService extends Service {
         let buffer = passwd + user.randstr;
         //4,对拼接的密码进行加密
         let newPassWd = this.crypto(buffer);
-        console.log(newPassWd)
+
         //5,对用户进行判断
         if (user.passwd == newPassWd) {
             user.token = this.getToken(user.uid)
